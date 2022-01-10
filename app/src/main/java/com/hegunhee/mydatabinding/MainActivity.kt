@@ -12,6 +12,5 @@ class MainActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this,R.layout.activity_main)
         val model = Model("firstName","secondName")
         binding.model = model
-        model.first_name = "no way"
     }
 }
