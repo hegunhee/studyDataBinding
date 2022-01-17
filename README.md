@@ -20,4 +20,6 @@ data binding을 사용했을 때, 당장 가시적으로 보이는 장점들을 
   
 그렇기때문에 뷰의 데이터 변화도 감지못해 객체의 데이터가 변화하지 않은것이었습니다. 그러므로 양방향으로 바꿔줘야했습니다.  
 바꿔주는 방법은 android.text = "@{viewmodel.secondName}" 에서 android.text = "@={viewmodel.secondName}"으로 바꿔주면 됩니다.  
-그리고 불변성을 가지고있는 데이터 타입이면 mutable으로 바꿔줘야됩니다.
+그리고 불변성을 가지고있는 데이터 타입이면 mutable으로 바꿔줘야됩니다.  
+블로그 정리  
+https://hegunhee.tistory.com/23
