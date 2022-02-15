@@ -1,5 +1,6 @@
 package com.hegunhee.mydatabinding
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.BindingAdapter
@@ -38,9 +39,11 @@ class RecyclerAdapter : RecyclerView.Adapter<RecyclerAdapter.RecyclerViewHolder>
 }
 @BindingAdapter("bind:movieList")
 fun bindMovieList(recyclerView: RecyclerView, items : ObservableArrayList<Movie>){
+    Log.d("test","bindAdapter 호출됨")
     val adapter = recyclerView.adapter as RecyclerAdapter
     if(adapter != null){
         adapter.setItems(items)
     }
+    Log.d("test", "bindAdapter 작동후")
 
 }
