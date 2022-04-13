@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.hegunhee.mydatabinding.databinding.ItemBinding
 
 class RecyclerAdapter : RecyclerView.Adapter<RecyclerAdapter.RecyclerViewHolder>() {
-    var movieList = ObservableArrayList<Movie>()
+    var movieList = ArrayList<Movie>()
 
     inner class RecyclerViewHolder(private val binding : ItemBinding) : RecyclerView.ViewHolder(binding.root){
 
@@ -32,18 +32,15 @@ class RecyclerAdapter : RecyclerView.Adapter<RecyclerAdapter.RecyclerViewHolder>
     override fun getItemCount(): Int {
         return movieList.size
     }
-    fun setItems(items: ObservableArrayList<Movie>){
+    fun setItems(items: ArrayList<Movie>){
         movieList = items
         notifyDataSetChanged()
     }
 }
-@BindingAdapter("bind:movieList")
-fun bindMovieList(recyclerView: RecyclerView, items : ObservableArrayList<Movie>){
-    Log.d("test","bindAdapter 호출됨")
-    val adapter = recyclerView.adapter as RecyclerAdapter
-    if(adapter != null){
-        adapter.setItems(items)
-    }
-    Log.d("test", "bindAdapter 작동후")
 
+@BindingAdapter("bind:movieList")
+fun setItems(recyclerView: RecyclerView, items : ArrayList<Movie>){
+    (recyclerView.adapter as RecyclerAdapter)?.run {
+        setItems(items)
+    }
 }
