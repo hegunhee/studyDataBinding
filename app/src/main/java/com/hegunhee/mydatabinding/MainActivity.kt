@@ -10,8 +10,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this,R.layout.activity_main)
-        val model = Model("firstName","secondName")
-        binding.lifecycleOwner = this
-        binding.model = model
+
+        binding.apply {
+            lifecycleOwner = this@MainActivity
+            model = Model("firstName","secondName")
+        }
     }
 }

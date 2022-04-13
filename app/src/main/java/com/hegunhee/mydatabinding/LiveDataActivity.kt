@@ -13,8 +13,9 @@ class LiveDataActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding : ActivityLiveDataBinding = DataBindingUtil.setContentView(this,R.layout.activity_live_data)
-
-        binding.lifecycleOwner = this
-        binding.viewmodel = viewModel
+        binding.apply {
+            lifecycleOwner = this@LiveDataActivity
+            viewmodel = viewModel
+        }
     }
 }
