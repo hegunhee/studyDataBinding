@@ -22,4 +22,7 @@ data binding을 사용했을 때, 당장 가시적으로 보이는 장점들을 
 바꿔주는 방법은 android.text = "@{viewmodel.secondName}" 에서 android.text = "@={viewmodel.secondName}"으로 바꿔주면 됩니다.  
 그리고 불변성을 가지고있는 데이터 타입이면 mutable으로 바꿔줘야됩니다.  
 블로그 정리  
-https://hegunhee.tistory.com/23
+https://hegunhee.tistory.com/23  
+  
+## BindingAdapter  
+[bindingAdapter 사용법](https://hegunhee.tistory.com/25)  
