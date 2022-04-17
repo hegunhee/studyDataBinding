@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.BindingAdapter
 import androidx.databinding.ObservableArrayList
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.hegunhee.mydatabinding.databinding.ItemBinding
 
@@ -35,9 +36,35 @@ class RecyclerAdapter : RecyclerView.Adapter<RecyclerAdapter.RecyclerViewHolder>
     }
 
     fun setItems(items: ArrayList<Movie>) {
-        movieList = items
-        notifyDataSetChanged()
+        val diffCallback = Diff(this.movieList,items)
+        val diffResult = DiffUtil.calculateDiff(diffCallback)
+        this.movieList.run {
+            clear()
+            addAll(items)
+            diffResult.dispatchUpdatesTo(this@RecyclerAdapter)
+        }
     }
+}
+private class Diff(
+    private val oldList : List<Movie>,
+    private val newList : List<Movie>
+) : DiffUtil.Callback(){
+    override fun getOldListSize(): Int {
+        return oldList.size
+    }
+
+    override fun getNewListSize(): Int {
+        return newList.size
+    }
+
+    override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+        return oldList[oldItemPosition].title == newList[newItemPosition].title
+    }
+
+    override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+        return oldList[oldItemPosition] == newList[newItemPosition]
+    }
+
 }
 
 @BindingAdapter("bind:movieList")
