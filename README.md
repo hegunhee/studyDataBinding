@@ -26,3 +26,6 @@ https://hegunhee.tistory.com/23
   
 ## BindingAdapter  
 [bindingAdapter 사용법](https://hegunhee.tistory.com/25)  
+## 기타 추가사항  
+RecyclerView의 데이터를 변경할때 최소한의 데이터에  
+대해서만 갱신하기위해 DiffUtil을 사용하였습니다.
